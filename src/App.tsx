@@ -14,8 +14,6 @@ function App() {
 
   function submitState(input: string) {
     setSubmittedQuery(input);
-    console.log(`submittedQuery ${submittedQuery}`);
-    console.log(data);
   }
 
   return (

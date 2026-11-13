@@ -32,8 +32,6 @@ export default function SearchBar({
     e.preventDefault();
     if (error || search === "") return;
     onSubmit(search);
-    console.log("subbmitted");
-    console.log(search);
   }
 
   return (
