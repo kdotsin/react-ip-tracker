@@ -2,6 +2,8 @@
 
 A React and TypeScript web app that looks up an IP address or domain and shows where it is on a map. When the page opens it shows your own IP. Type in another IP or domain, hit the arrow, and the page shows its address, location, timezone, and internet provider, then moves the map pin to that spot.
 
+**Live site:** <https://kdotsin.github.io/react-ip-tracker/>
+
 This is a rebuild of my earlier vanilla TypeScript [IP Address Tracker](https://github.com/kdotsin/ip-address-tracker), this time with React components, a custom hook, and Context.
 
 ## Features
@@ -27,7 +29,12 @@ This is a rebuild of my earlier vanilla TypeScript [IP Address Tracker](https://
 ```
 react-ip-tracker/
 ├── index.html                # Page shell and Tailwind component styles
+├── vite.config.ts            # Vite config, including the GitHub Pages base path
 ├── .env.local                # Your IPify API key (not committed, see Getting Started)
+├── .github/workflows/
+│   └── deploy.yml            # Builds and deploys to GitHub Pages on push to main
+├── public/
+│   └── images/               # Background patterns and favicon (copied as-is)
 └── src/
     ├── main.tsx              # Entry point: renders <App /> in StrictMode
     ├── App.tsx               # Page layout; holds the search query and shares the data
@@ -41,7 +48,7 @@ react-ip-tracker/
     │   └── IpContext.ts      # Context that shares the IP data with the components
     ├── types/
     │   └── types.ts          # ipAPI and Location interfaces
-    └── images/               # Background patterns, icons, favicon
+    └── images/               # Arrow and location icons
 ```
 
 ### How it works
@@ -66,7 +73,7 @@ react-ip-tracker/
    ```bash
    npm run dev
    ```
-4. Open the link Vite prints in the terminal (usually <http://localhost:5173>) and search for an IP address or domain.
+4. Open the link Vite prints in the terminal (usually <http://localhost:5173/react-ip-tracker/>) and search for an IP address or domain.
 
 Other scripts:
 
@@ -75,6 +82,10 @@ Other scripts:
 | `npm run build` | Type-checks and builds the app into `dist/` |
 | `npm run preview` | Serves the built `dist/` folder locally |
 | `npm run lint` | Runs Oxlint on the project |
+
+## Deployment
+
+The site is deployed to GitHub Pages by a GitHub Actions workflow (`.github/workflows/deploy.yml`). Every push to `main` builds the app and publishes the `dist/` folder. The workflow reads the API key from a repository secret named `VITE_IPIFY_KEY`, and the repo's Pages source is set to **GitHub Actions**.
 
 ## Known Limitations
 
