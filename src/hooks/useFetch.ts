@@ -39,7 +39,7 @@ export default function useFetch(url: string, input: string) {
     return () => {
       ignore = true;
     }
-  }, [url]);
+  }, [input]);
 
   return { data };
 }

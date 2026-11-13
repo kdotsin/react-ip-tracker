@@ -1,17 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | IP Address Tracker</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+    <title>Frontend Mentor | IP Address Tracker</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @layer components {
+        .address-container {
+          @apply mx-auto max-w-4xl rounded-2xl bg-white p-6 shadow-lg;
+        }
+
+        .address-cards {
+          @apply flex flex-col gap-4 md:flex-row md:divide-x md:divide-gray-300;
+        }
+
+        .address-detail {
+          @apply flex-1 md:px-6;
+        }
+
+        .card-title {
+          @apply text-xs tracking-widest text-gray-400;
+        }
+
+        .card-content {
+          @apply text-xl font-bold;
+        }
+
+        .ip-input {
+          @apply flex-1 rounded-l-2xl bg-white px-5 py-3 text-sm outline-none placeholder:text-gray-400;
+        }
+
+        .search-btn {
+          @apply rounded-r-2xl bg-black px-5 cursor-pointer rounded-r-2xl bg-black px-5;
+        }
+
+        .bg-img {
+          @apply relative bg-cover md:bg-size-[100%_220px] md:bg-no-repeat bg-[url('./src/images/pattern-bg-mobile.png')] md:bg-[url('./src/images/pattern-bg-desktop.png')];
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

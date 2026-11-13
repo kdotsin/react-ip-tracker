@@ -1,21 +1,27 @@
-import useFetch from "./hooks/useFetch.ts";
 import IpContext from "./context/IpContext.ts";
+import { useState } from "react";
+import SearchBar from "./components/SearchBar.tsx";
+import useFetch from "./hooks/useFetch.ts";
 
 function App() {
+  const [submittedQuery, setSubmittedQuery] = useState("");
   const { data } = useFetch(
     "https://geo.ipify.org/api/v2/country,city?apiKey=at_UAFQBYZUGgSsKTTEmqICIWGKZkZRL&ipAddress=",
-    "8.8.8.8",
+    submittedQuery,
   );
+
+  function submitState(input: string) {
+    setSubmittedQuery(input);
+    console.log(`submittedQuery ${submittedQuery}`);
+    console.log(data);
+  }
+
   return (
-    <IpContext.Provider value={data}>
-      <div>
-        <h1>hello world</h1>
-        <div>
-          {data?.ip}
-          {data?.location.city}
-        </div>
-      </div>
-    </IpContext.Provider>
+    <div>
+      <IpContext.Provider value={data}>
+        <SearchBar onSubmit={submitState} />
+      </IpContext.Provider>
+    </div>
   );
 }
 
