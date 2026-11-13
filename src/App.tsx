@@ -18,14 +18,13 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="flex h-80 flex-col items-center gap-10 px-6 pt-8 bg-img md:h-[220px]">
       <IpContext.Provider value={data}>
         <SearchBar onSubmit={submitState} />
-        <ContentBar />
+        <div className="address-container">
+          <ContentBar />
+        </div>
       </IpContext.Provider>
-      {data?.ip}
-      {data?.isp}
-      {data?.location.city}
     </div>
   );
 }

@@ -21,6 +21,8 @@ export default function useFetch(url: string, input: string) {
             city: rawData.location.city,
             postalCode: rawData.location.postalCode,
             timezone: rawData.location.timezone,
+            lat: rawData.location.lat,
+            lng: rawData.location.lng,
           },
           isp: rawData.isp
         }

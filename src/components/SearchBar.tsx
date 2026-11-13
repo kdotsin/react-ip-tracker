@@ -34,7 +34,6 @@ export default function SearchBar({
   return (
     <div>
       <h1 className="text-2xl font-medium text-white">IP Address Tracker</h1>
-      <p>{search}</p>
       <form
         className="mx-auto flex w-full max-w-xl"
         id="ip-search"
