@@ -2,6 +2,7 @@ import IpContext from "./context/IpContext.ts";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar.tsx";
 import useFetch from "./hooks/useFetch.ts";
+import ContentBar from "./components/ContentBar.tsx";
 
 function App() {
   const [submittedQuery, setSubmittedQuery] = useState("");
@@ -20,7 +21,11 @@ function App() {
     <div>
       <IpContext.Provider value={data}>
         <SearchBar onSubmit={submitState} />
+        <ContentBar />
       </IpContext.Provider>
+      {data?.ip}
+      {data?.isp}
+      {data?.location.city}
     </div>
   );
 }
