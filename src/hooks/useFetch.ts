@@ -4,14 +4,9 @@ import type ipAPI from "../types/types";
 
 export default function useFetch(url: string, input: string) {
   const [data, setData] = useState<ipAPI | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let ignore = false;
-
-    setLoading(true);
-    setError(null);
 
     async function fetchData() {
       try {
@@ -35,9 +30,7 @@ export default function useFetch(url: string, input: string) {
         }
 
       } catch (error: any) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        console.error('Error retrieving data:', error.message)
       }
     }
 
@@ -48,5 +41,5 @@ export default function useFetch(url: string, input: string) {
     }
   }, [url]);
 
-  return { data, loading, error}
+  return { data };
 }
