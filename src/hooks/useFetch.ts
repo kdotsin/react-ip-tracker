@@ -10,7 +10,9 @@ export default function useFetch(url: string, input: string) {
 
     async function fetchData() {
       try {
-        const response = await axios.get(`${url}${input}`)
+        // Only digits and dots means an IP address, anything else is a domain
+        const param = /^[\d.]*$/.test(input) ? "ipAddress" : "domain";
+        const response = await axios.get(`${url}&${param}=${input}`)
 
         const rawData = response.data;
 
@@ -41,7 +43,7 @@ export default function useFetch(url: string, input: string) {
     return () => {
       ignore = true;
     }
-  }, [input]);
+  }, [url, input]);
 
   return { data };
 }

@@ -13,11 +13,11 @@ export default function ContentBar() {
       </div>
       <div className="address-detail">
         <dt className="card-title">Location</dt>
-        <dd className="card-content" id="ip-location">{data?.location.city}</dd>
+        <dd className="card-content" id="ip-location">{data && `${data.location.city}, ${data.location.region} ${data.location.postalCode}`}</dd>
       </div>
       <div className="address-detail">
         <dt className="card-title">Timezone</dt>
-        <dd className="card-content" id="ip-timezone">{data?.location.timezone}</dd>
+        <dd className="card-content" id="ip-timezone">{data && `UTC ${data.location.timezone}`}</dd>
       </div>
       <div className="address-detail">
         <dt className="card-title">ISP</dt>

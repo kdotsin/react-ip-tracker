@@ -8,7 +8,7 @@ import MapView from "./components/MapView.tsx";
 function App() {
   const [submittedQuery, setSubmittedQuery] = useState("");
   const { data } = useFetch(
-    "https://geo.ipify.org/api/v2/country,city?apiKey=at_UAFQBYZUGgSsKTTEmqICIWGKZkZRL&ipAddress=",
+    `https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_IPIFY_KEY}`,
     submittedQuery,
   );
 

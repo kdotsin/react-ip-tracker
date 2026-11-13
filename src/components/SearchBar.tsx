@@ -15,10 +15,14 @@ export default function SearchBar({
     return parts.every((p) => /^\d{1,3}$/.test(p) && Number(p) <= 255);
   }
 
+  function isValidDomain(input: string): boolean {
+    return /^([a-z0-9-]+\.)+[a-z]{2,}$/i.test(input);
+  }
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
-    if (!isValidIp(e.target.value)) {
-      setError('Incorrect input: please set valid IP address')
+    if (!isValidIp(e.target.value) && !isValidDomain(e.target.value)) {
+      setError('Incorrect input: please enter a valid IP address or domain')
     } else {
       setError('')
     }
@@ -26,6 +30,7 @@ export default function SearchBar({
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (error || search === "") return;
     onSubmit(search);
     console.log("subbmitted");
     console.log(search);
